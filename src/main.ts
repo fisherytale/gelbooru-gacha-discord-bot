@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { Intents, Interaction, Message } from "discord.js";
 import { Client } from "discordx";
 import { dirname, importx } from "@discordx/importer";
+import dotenv from "dotenv";
 
 const client = new Client({
   simpleCommand: {
@@ -15,7 +16,7 @@ const client = new Client({
     Intents.FLAGS.GUILD_VOICE_STATES,
   ],
   // If you only want to use global commands only, comment this line
-  botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
+  // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
 });
 
 client.once("ready", async () => {
@@ -33,9 +34,9 @@ client.once("ready", async () => {
 
   // uncomment this line to clear all guild commands,
   // useful when moving to global commands from guild commands
-  //  await client.clearApplicationCommands(
-  //    ...client.guilds.cache.map((g) => g.id)
-  //  );
+  // await client.clearApplicationCommands(
+  //   ...client.guilds.cache.map((g) => g.id)
+  // );
 
   console.log("Bot started");
 });
@@ -49,9 +50,8 @@ client.on("messageCreate", (message: Message) => {
 });
 
 async function run() {
-  // with cjs
-  // await importx(__dirname + "/{events,commands}/**/*.{ts,js}");
   // with ems
+  dotenv.config();
   await importx(dirname(import.meta.url) + "/{events,commands}/**/*.{ts,js}");
   client.login(process.env.BOT_TOKEN ?? ""); // provide your bot token
 }

@@ -38,10 +38,15 @@
     "@discordx/utilities": "^3.3.0",
     "discord.js": "^13.5.0",
     "discordx": "^9.1.9",
-    "reflect-metadata": "^0.1.13"
+    "dotenv": "^16.0.0",
+    "html-entities": "^2.3.2",
+    "node-fetch": "^3.1.0",
+    "reflect-metadata": "^0.1.13",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@discordx/changelog": "^2.0.6",
+    "@types/xml2js": "^0.4.9",
     "nodemon": "^2.0.15",
     "prettier": "^2.5.1",
     "ts-node": "^10.4.0",
